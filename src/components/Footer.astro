@@ -12,7 +12,7 @@ const currentYear = new Date().getFullYear();
       <!-- Column 1: Church Identity -->
       <div class="space-y-4">
         <div class="flex items-center gap-2">
-          <span class="w-7 h-7 rounded border border-gold-500/40 flex items-center justify-center font-display font-semibold text-gold-400 bg-navy-900 text-sm">
+          <span class="w-7 h-7 rounded border border-gold-500/40 flex items-center justify-center font-display font-semibold text-gold-400 bg-navy-900 text-sm" aria-hidden="true">
             ✝
           </span>
           <span class="font-display text-xl font-bold text-warm-white tracking-wide">
@@ -27,7 +27,7 @@ const currentYear = new Date().getFullYear();
         </p>
         <div class="pt-2">
           <span class="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-mono tracking-tight bg-navy-900 border border-slate-700 text-slate-300">
-            Phase 1 • Planning & Development
+            Phase 1 <span aria-hidden="true">•</span> Planning & Development
           </span>
         </div>
       </div>
@@ -39,17 +39,17 @@ const currentYear = new Date().getFullYear();
         </h3>
         <dl class="space-y-2 text-sm">
           <div>
-            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Day & Time</dt>
-            <dd class="text-slate-200 font-medium">{churchConfig.gathering.day} • {churchConfig.gathering.time}</dd>
+            <dt class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Day & Time</dt>
+            <dd class="text-slate-200 font-medium">{churchConfig.gathering.day} <span aria-hidden="true">•</span> {churchConfig.gathering.time}</dd>
           </div>
           <div>
-            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Location</dt>
+            <dt class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Location</dt>
             <dd class="text-slate-200">{churchConfig.gathering.locationName}</dd>
             <dd class="text-slate-400 text-xs">{churchConfig.gathering.streetAddress}</dd>
             <dd class="text-slate-400 text-xs">{churchConfig.gathering.cityStateZip}</dd>
           </div>
           <div>
-            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Room / Entrance</dt>
+            <dt class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Room / Entrance</dt>
             <dd class="text-slate-400 text-xs">{churchConfig.gathering.roomOrHall}</dd>
           </div>
         </dl>
@@ -83,15 +83,15 @@ const currentYear = new Date().getFullYear();
         </p>
         <dl class="space-y-2 text-sm pt-1">
           <div>
-            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Email</dt>
+            <dt class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Email</dt>
             <dd class="text-gold-400 font-mono text-xs">{churchConfig.contact.email}</dd>
           </div>
           <div>
-            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Phone</dt>
+            <dt class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Phone</dt>
             <dd class="text-slate-300 font-mono text-xs">{churchConfig.contact.phone}</dd>
           </div>
           <div>
-            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Mailing</dt>
+            <dt class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Mailing</dt>
             <dd class="text-slate-400 text-xs">{churchConfig.contact.mailingAddress}</dd>
           </div>
         </dl>
@@ -110,15 +110,15 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Bottom Bar -->
-    <div class="mt-8 pt-6 border-t border-navy-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <div class="mt-8 pt-6 border-t border-navy-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
       <p>
         &copy; {currentYear} {churchConfig.name}. All rights reserved.
       </p>
       <div class="flex items-center gap-4 text-slate-400 font-serif italic text-sm">
         <span>Sola Scriptura</span>
-        <span>•</span>
+        <span aria-hidden="true">•</span>
         <span>Sola Gratia</span>
-        <span>•</span>
+        <span aria-hidden="true">•</span>
         <span>Soli Deo Gloria</span>
       </div>
     </div>
