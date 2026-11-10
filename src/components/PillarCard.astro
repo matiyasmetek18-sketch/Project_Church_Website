@@ -13,7 +13,7 @@ const { number, title, summary, scripture } = Astro.props;
   <div>
     <!-- Card Number & Scripture Badge -->
     <div class="flex items-center justify-between gap-4 mb-6">
-      <span class="font-display text-2xl font-bold text-slate-300">
+      <span class="font-display text-2xl font-bold text-slate-300" aria-hidden="true">
         {number}
       </span>
       <span class="inline-flex items-center px-2.5 py-1 text-xs font-serif italic text-gold-700 bg-gold-100/60 rounded border border-gold-600/20">
@@ -34,7 +34,7 @@ const { number, title, summary, scripture } = Astro.props;
 
   <!-- Decorative bottom hairline -->
   <div class="mt-6 pt-4 border-t border-warm-border/60 flex items-center justify-between text-xs text-slate-500">
-    <span class="uppercase tracking-wider font-semibold text-[11px] text-slate-400">Theological Foundation</span>
-    <span class="text-gold-600 font-serif">✝</span>
+    <span class="uppercase tracking-wider font-semibold text-[11px] text-slate-600">Theological Foundation</span>
+    <span class="text-gold-600 font-serif" aria-hidden="true">✝</span>
   </div>
 </article>

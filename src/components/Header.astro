@@ -1,11 +1,5 @@
 ---
 import { churchConfig } from '../config/church';
-
-interface Props {
-  currentPath?: string;
-}
-
-const { currentPath = '/' } = Astro.props;
 ---
 
 <header class="w-full border-b border-warm-border bg-warm-white sticky top-0 z-40 transition-all">
@@ -15,7 +9,7 @@ const { currentPath = '/' } = Astro.props;
       <div class="flex items-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-gold-500 animate-pulse" aria-hidden="true"></span>
         <span class="font-medium tracking-wide uppercase text-[11px] text-gold-400">Church Plant Notice</span>
-        <span class="hidden sm:inline text-slate-500">|</span>
+        <span class="hidden sm:inline text-slate-500" aria-hidden="true">|</span>
         <span class="text-slate-300">Phase 1 preview with verified placeholders for leadership review</span>
       </div>
       <div class="text-[11px] text-slate-400 tracking-wider uppercase font-semibold">
@@ -32,7 +26,7 @@ const { currentPath = '/' } = Astro.props;
       <a href="/" class="group flex flex-col focus:outline-none focus:ring-2 focus:ring-gold-600 focus:ring-offset-2 rounded px-1 -ml-1">
         <div class="flex items-center gap-2">
           <!-- Monogram / Cross Icon Placeholder -->
-          <span class="w-8 h-8 rounded border border-navy-800/30 flex items-center justify-center font-display font-semibold text-navy-900 group-hover:border-gold-600 group-hover:text-gold-700 transition-colors bg-warm-cream">
+          <span class="w-8 h-8 rounded border border-navy-800/30 flex items-center justify-center font-display font-semibold text-navy-900 group-hover:border-gold-600 group-hover:text-gold-700 transition-colors bg-warm-cream" aria-hidden="true">
             ✝
           </span>
           <span class="font-display text-xl sm:text-2xl font-bold tracking-tight text-navy-950 group-hover:text-gold-700 transition-colors">
@@ -46,36 +40,14 @@ const { currentPath = '/' } = Astro.props;
 
       <!-- Desktop Navigation Links -->
       <nav class="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Main Navigation">
-        <a 
-          href="#gathering" 
-          class="px-3 py-2 text-sm font-medium text-navy-800 hover:text-gold-700 hover:bg-warm-cream rounded transition-colors"
-        >
-          Sundays
-        </a>
-        <a 
-          href="#beliefs" 
-          class="px-3 py-2 text-sm font-medium text-navy-800 hover:text-gold-700 hover:bg-warm-cream rounded transition-colors"
-        >
-          Our Beliefs
-        </a>
-        <a 
-          href="#worship" 
-          class="px-3 py-2 text-sm font-medium text-navy-800 hover:text-gold-700 hover:bg-warm-cream rounded transition-colors"
-        >
-          Worship
-        </a>
-        <a 
-          href="#about" 
-          class="px-3 py-2 text-sm font-medium text-navy-800 hover:text-gold-700 hover:bg-warm-cream rounded transition-colors"
-        >
-          About
-        </a>
-        <a 
-          href="#contact" 
-          class="px-3 py-2 text-sm font-medium text-navy-800 hover:text-gold-700 hover:bg-warm-cream rounded transition-colors"
-        >
-          Contact
-        </a>
+        {churchConfig.navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-3 py-2 text-sm font-medium text-navy-800 hover:text-gold-700 hover:bg-warm-cream rounded transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
       </nav>
 
       <!-- Action Button (Desktop) -->
@@ -113,36 +85,14 @@ const { currentPath = '/' } = Astro.props;
 
   <!-- Mobile Menu Dropdown -->
   <div id="mobile-menu" class="hidden md:hidden border-t border-warm-border bg-warm-white px-4 pt-3 pb-6 space-y-2">
-    <a 
-      href="#gathering" 
-      class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-navy-900 hover:bg-warm-cream hover:text-gold-700"
-    >
-      Sunday Gathering
-    </a>
-    <a 
-      href="#beliefs" 
-      class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-navy-900 hover:bg-warm-cream hover:text-gold-700"
-    >
-      Our Beliefs
-    </a>
-    <a 
-      href="#worship" 
-      class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-navy-900 hover:bg-warm-cream hover:text-gold-700"
-    >
-      Worship Order
-    </a>
-    <a 
-      href="#about" 
-      class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-navy-900 hover:bg-warm-cream hover:text-gold-700"
-    >
-      About the Plant
-    </a>
-    <a 
-      href="#contact" 
-      class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-navy-900 hover:bg-warm-cream hover:text-gold-700"
-    >
-      Contact Us
-    </a>
+    {churchConfig.navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-navy-900 hover:bg-warm-cream hover:text-gold-700"
+      >
+        {link.label}
+      </a>
+    ))}
     <div class="pt-2">
       <a 
         href="#gathering" 
@@ -155,30 +105,59 @@ const { currentPath = '/' } = Astro.props;
 </header>
 
 <script>
+  const headerEl = document.querySelector('header');
+  if (headerEl) {
+    const syncScrollPadding = () => {
+      document.documentElement.style.scrollPaddingTop = `${headerEl.offsetHeight}px`;
+    };
+    syncScrollPadding();
+    new ResizeObserver(syncScrollPadding).observe(headerEl);
+  }
+
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const hamburger = document.getElementById('hamburger-icon');
-  const close = document.getElementById('close-icon');
+  const closeIcon = document.getElementById('close-icon');
   const links = document.querySelectorAll('.mobile-nav-link');
 
-  if (btn && menu && hamburger && close) {
-    const toggleMenu = () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!isExpanded));
-      menu.classList.toggle('hidden');
-      hamburger.classList.toggle('hidden');
-      close.classList.toggle('hidden');
+  if (btn && menu && hamburger && closeIcon) {
+    const setMenuOpen = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('hidden', !open);
+      hamburger.classList.toggle('hidden', open);
+      closeIcon.classList.toggle('hidden', !open);
     };
 
-    btn.addEventListener('click', toggleMenu);
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      setMenuOpen(!isExpanded);
+    });
 
     // Close menu when a link is tapped
-    links.forEach(link => {
+    links.forEach((link) => {
       link.addEventListener('click', () => {
-        if (!menu.classList.contains('hidden')) {
-          toggleMenu();
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          setMenuOpen(false);
         }
       });
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || btn.getAttribute('aria-expanded') !== 'true') {
+        return;
+      }
+      event.preventDefault();
+      setMenuOpen(false);
+      btn.focus();
+    });
+
+    // Desktop nav is always visible at md; don't leave the mobile menu expanded.
+    const desktopNav = window.matchMedia('(min-width: 768px)');
+    const resetMenuAtDesktop = () => {
+      if (desktopNav.matches) {
+        setMenuOpen(false);
+      }
+    };
+    desktopNav.addEventListener('change', resetMenuAtDesktop);
   }
 </script>

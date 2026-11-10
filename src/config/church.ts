@@ -22,6 +22,7 @@ export interface WorshipElement {
 export interface ChurchConfig {
   name: string;
   shortName: string;
+  city: string;
   tagline: string;
   tradition: string;
   visionStatement: string;
@@ -37,6 +38,7 @@ export interface ChurchConfig {
     parkingNotes: string;
     accessibilityNotes: string;
     arrivalTip: string;
+    notes: string;
   };
   contact: {
     email: string;
@@ -69,6 +71,7 @@ export interface ChurchConfig {
 export const churchConfig: ChurchConfig = {
   name: "[CHURCH NAME]",
   shortName: "[CHURCH NAME]",
+  city: "[City]",
   tagline: "A Reformed Baptist Church Plant in [CITY / REGION]",
   tradition: "Reformed Baptist",
   visionStatement: "[VISION / MISSION STATEMENT: Awaiting leadership approval]",
@@ -85,6 +88,7 @@ export const churchConfig: ChurchConfig = {
     parkingNotes: "[PARKING INSTRUCTIONS: Details to be confirmed]",
     accessibilityNotes: "[ACCESSIBILITY & WHEELCHAIR ENTRANCE: Details to be confirmed]",
     arrivalTip: "[ARRIVALS & GREETING INSTRUCTIONS: Details to be confirmed]",
+    notes: "[Gathering notes]",
   },
 
   contact: {
@@ -156,11 +160,10 @@ export const churchConfig: ChurchConfig = {
   },
 
   navLinks: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Our Beliefs", href: "/beliefs" },
-    { label: "Worship & Gatherings", href: "/worship" },
-    { label: "Sermons & Resources", href: "/resources" },
-    { label: "Contact", href: "/contact" },
+    { label: "Sundays", href: "#gathering" },
+    { label: "Our Beliefs", href: "#beliefs" },
+    { label: "Worship", href: "#worship" },
+    { label: "About", href: "#about" },
+    { label: "Contact", href: "#contact" },
   ],
 };

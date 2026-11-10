@@ -25,7 +25,7 @@ import { churchConfig } from '../config/church';
         <span class="tracking-wide uppercase font-semibold text-gold-700 font-sans text-[11px] sm:text-xs">
           Church Plant Initiative
         </span>
-        <span class="text-slate-400">•</span>
+        <span class="text-slate-400" aria-hidden="true">•</span>
         <span class="text-slate-700">{churchConfig.tradition} Tradition</span>
       </div>
 
@@ -37,7 +37,7 @@ import { churchConfig } from '../config/church';
 
       <!-- Mission Statement / Subtitle -->
       <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-700 leading-relaxed font-normal mb-10">
-        We are a Reformed Baptist church plant gathering in <span class="font-semibold text-navy-900">{churchConfig.name}</span>, dedicated to the authority of Holy Scripture, historic confessional faith, and the sovereign grace of God.
+        We are a {churchConfig.tradition} church plant gathering in <span class="font-semibold text-navy-900">{churchConfig.city}</span>, dedicated to the authority of Holy Scripture, historic confessional faith, and the sovereign grace of God.
       </p>
 
       <!-- Action Buttons -->
@@ -62,7 +62,7 @@ import { churchConfig } from '../config/church';
           
           <!-- When -->
           <div class="flex items-start gap-4 pt-4 md:pt-0">
-            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg" aria-hidden="true">
               ⏰
             </div>
             <div>
@@ -74,7 +74,7 @@ import { churchConfig } from '../config/church';
 
           <!-- Where -->
           <div class="flex items-start gap-4 pt-4 md:pt-0 md:pl-6">
-            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg" aria-hidden="true">
               📍
             </div>
             <div>
@@ -86,7 +86,7 @@ import { churchConfig } from '../config/church';
 
           <!-- Status / Contact -->
           <div class="flex items-start gap-4 pt-4 md:pt-0 md:pl-6">
-            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg" aria-hidden="true">
               ✉️
             </div>
             <div>
@@ -121,7 +121,7 @@ import { churchConfig } from '../config/church';
         <div class="bg-white p-8 rounded border border-warm-border shadow-xs flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <span class="w-2.5 h-2.5 rounded-full bg-gold-600"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-600" aria-hidden="true"></span>
               <h3 class="font-display text-xl font-bold text-navy-950">Location & Time</h3>
             </div>
             <dl class="space-y-4 text-sm mt-6">
@@ -150,7 +150,7 @@ import { churchConfig } from '../config/church';
         <div class="bg-white p-8 rounded border border-warm-border shadow-xs flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <span class="w-2.5 h-2.5 rounded-full bg-gold-600"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-600" aria-hidden="true"></span>
               <h3 class="font-display text-xl font-bold text-navy-950">Arrival & Access</h3>
             </div>
             <div class="space-y-4 text-sm text-slate-700 mt-6">
@@ -177,7 +177,7 @@ import { churchConfig } from '../config/church';
         <div class="bg-white p-8 rounded border border-warm-border shadow-xs flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <span class="w-2.5 h-2.5 rounded-full bg-gold-600"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-600" aria-hidden="true"></span>
               <h3 class="font-display text-xl font-bold text-navy-950">Families & Attire</h3>
             </div>
             <div class="space-y-4 text-sm text-slate-700 mt-6">
@@ -328,9 +328,9 @@ import { churchConfig } from '../config/church';
           <div class="border-t border-warm-border pt-4 flex flex-col sm:flex-row sm:items-center justify-between text-sm">
             <div>
               <p class="font-bold text-navy-950">{churchConfig.leadership.greetingAuthor}</p>
-              <p class="text-xs text-slate-500">{churchConfig.leadership.greetingAuthorRole}</p>
+              <p class="text-xs text-slate-600">{churchConfig.leadership.greetingAuthorRole}</p>
             </div>
-            <div class="mt-2 sm:mt-0 text-xs font-mono text-slate-400">
+            <div class="mt-2 sm:mt-0 text-xs font-mono text-slate-600">
               Status: Draft placeholder awaiting final review
             </div>
           </div>
@@ -361,7 +361,7 @@ import { churchConfig } from '../config/church';
         <div class="space-y-6">
           
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0" aria-hidden="true">
               ✉
             </div>
             <div>
@@ -372,7 +372,7 @@ import { churchConfig } from '../config/church';
           </div>
 
           <div class="border-t border-warm-border/60 pt-6 flex items-start gap-4">
-            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0" aria-hidden="true">
               📞
             </div>
             <div>
@@ -383,7 +383,7 @@ import { churchConfig } from '../config/church';
           </div>
 
           <div class="border-t border-warm-border/60 pt-6 flex items-start gap-4">
-            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0" aria-hidden="true">
               📬
             </div>
             <div>

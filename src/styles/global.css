@@ -32,8 +32,17 @@ html {
   background-color: var(--color-warm-white);
   color: var(--color-navy-900);
   scroll-behavior: smooth;
+  /* Desktop sticky header: notice (2rem + 1px) + h-20 nav + 1px border = 114px. */
+  scroll-padding-top: calc(7rem + 2px);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 767px) {
+  html {
+    /* Wrapped notice + nav. The header script replaces this with the live height. */
+    scroll-padding-top: 10.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
