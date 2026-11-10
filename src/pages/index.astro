@@ -169,7 +169,7 @@ import { churchConfig } from '../config/church';
             </div>
           </div>
           <div class="mt-8 pt-4 border-t border-warm-border text-xs text-slate-500">
-            <p>Our greeting team will be at the entrance to welcome you and assist with directions.</p>
+            <p><span class="font-semibold text-slate-600">[GREETING & ARRIVAL:</span> Greeter and door coordination details to be confirmed by leadership.]</p>
           </div>
         </div>
 
@@ -191,7 +191,7 @@ import { churchConfig } from '../config/church';
               </div>
               <div>
                 <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">What to Bring</p>
-                <p class="text-slate-600 leading-relaxed">Bring your Bible (we commonly preach from the ESV/NASB). Hymnals and worship orders are provided at the door.</p>
+                <p class="text-slate-600 leading-relaxed">[BIBLES & HYMNALS: Bible translation, hymnal, and worship order arrangements to be confirmed by leadership.]</p>
               </div>
             </div>
           </div>
@@ -219,7 +219,7 @@ import { churchConfig } from '../config/church';
       />
 
       <!-- Confessional Banner -->
-      <div class="mb-12 p-6 sm:p-8 bg-warm-cream border-l-4 border-gold-600 rounded-r text-left">
+      <div class="mb-8 p-6 sm:p-8 bg-warm-cream border-l-4 border-gold-600 rounded-r text-left">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <span class="text-xs uppercase tracking-widest font-bold text-gold-700 block mb-1">
@@ -238,6 +238,11 @@ import { churchConfig } from '../config/church';
             </span>
           </div>
         </div>
+      </div>
+
+      <!-- Doctrinal Pillars Notice -->
+      <div class="mb-6 p-3 bg-warm-cream/60 border border-warm-border rounded text-center text-xs font-mono text-slate-600">
+        {churchConfig.theology.pillarsNotice}
       </div>
 
       <!-- 4 Pillars Grid -->
@@ -267,6 +272,11 @@ import { churchConfig } from '../config/church';
         title="Reverent, God-Centered Corporate Liturgy"
         subtitle={churchConfig.worship.description}
       />
+
+      <!-- Liturgical Elements Notice -->
+      <div class="mb-6 p-3 bg-warm-cream/60 border border-warm-border rounded text-center text-xs font-mono text-slate-600">
+        {churchConfig.worship.elementsNotice}
+      </div>
 
       <div class="space-y-6">
         {churchConfig.worship.orderElements.map((element, index) => (

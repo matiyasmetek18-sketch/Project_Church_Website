@@ -49,10 +49,12 @@ export interface ChurchConfig {
   theology: {
     confessionTitle: string;
     confessionSummary: string;
+    pillarsNotice: string;
     pillars: Pillar[];
   };
   worship: {
     description: string;
+    elementsNotice: string;
     orderElements: WorshipElement[];
     childcarePolicy: string;
     dressCodeGuidance: string;
@@ -101,6 +103,7 @@ export const churchConfig: ChurchConfig = {
   theology: {
     confessionTitle: "[HISTORIC REFORMED CONFESSION - e.g., 1689 2LBCF]",
     confessionSummary: "[CONFESSIONAL COMMITMENT: Specific confessional standard and formal statements of faith are pending final leadership ratification.]",
+    pillarsNotice: "[PROVISIONAL DRAFT: Doctrinal pillars below are representative examples pending formal adoption by church leadership.]",
     pillars: [
       {
         title: "The Authority of Scripture",
@@ -127,6 +130,7 @@ export const churchConfig: ChurchConfig = {
 
   worship: {
     description: "Our corporate worship is regulated by Scripture—reverent, God-centered, joyful, and rich in biblical substance.",
+    elementsNotice: "[PROVISIONAL DRAFT: Liturgical elements below are representative examples pending formal adoption by church leadership.]",
     orderElements: [
       {
         title: "Congregational Praise",
@@ -150,7 +154,7 @@ export const churchConfig: ChurchConfig = {
       },
     ],
     childcarePolicy: "[CHILDCARE & NURSERY ARRANGEMENTS: Policy and age arrangements pending leadership decision.]",
-    dressCodeGuidance: "Please dress in whatever way is comfortable and reverent for you; you will find people in everything from casual attire to suits.",
+    dressCodeGuidance: "[DRESS CODE & ATTIRE: Guidance to be confirmed by leadership]",
   },
 
   leadership: {
