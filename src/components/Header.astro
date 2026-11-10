@@ -106,10 +106,11 @@ import { churchConfig } from '../config/church';
 
 <script>
   const headerEl = document.querySelector('header');
+  const syncScrollPadding = () => {
+    if (!headerEl) return;
+    document.documentElement.style.scrollPaddingTop = `${headerEl.offsetHeight}px`;
+  };
   if (headerEl) {
-    const syncScrollPadding = () => {
-      document.documentElement.style.scrollPaddingTop = `${headerEl.offsetHeight}px`;
-    };
     syncScrollPadding();
     new ResizeObserver(syncScrollPadding).observe(headerEl);
   }
@@ -118,7 +119,6 @@ import { churchConfig } from '../config/church';
   const menu = document.getElementById('mobile-menu');
   const hamburger = document.getElementById('hamburger-icon');
   const closeIcon = document.getElementById('close-icon');
-  const links = document.querySelectorAll('.mobile-nav-link');
 
   if (btn && menu && hamburger && closeIcon) {
     const setMenuOpen = (open: boolean) => {
@@ -133,13 +133,17 @@ import { churchConfig } from '../config/church';
       setMenuOpen(!isExpanded);
     });
 
-    // Close menu when a link is tapped
-    links.forEach((link) => {
-      link.addEventListener('click', () => {
-        if (btn.getAttribute('aria-expanded') === 'true') {
-          setMenuOpen(false);
-        }
-      });
+    // Close on any in-menu link, and apply the collapsed header height before
+    // the browser scrolls. Otherwise the hash target keeps the open-menu offset.
+    menu.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const link = target.closest('a');
+      if (!link || !menu.contains(link) || btn.getAttribute('aria-expanded') !== 'true') {
+        return;
+      }
+      setMenuOpen(false);
+      syncScrollPadding();
     });
 
     document.addEventListener('keydown', (event) => {

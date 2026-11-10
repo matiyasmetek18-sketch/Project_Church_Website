@@ -1,61 +1,63 @@
-# [CHURCH NAME] - Reformed Baptist Church Plant Website
+# Church plant website
 
-A fast, static-first church plant website built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com).
+Static site built with [Astro](https://astro.build) and Tailwind CSS. Church facts live in [`src/config/church.ts`](src/config/church.ts) as bracketed placeholders such as `[CHURCH NAME]` and `[City]`. Never invent names, addresses, times, or doctrine.
 
-## Overview
+## Prerequisites
 
-This website serves a Reformed Baptist church plant. It is designed with a classical editorial aesthetic, high readability, and strict accessibility standards.
-
-### Architectural Principles & Constraints
-- **Static-first**: No database, no client-side authentication, 0kB unnecessary JavaScript runtime.
-- **Strict No-Fabrication Rule**: Unconfirmed details (church name, physical location, meeting time, pastor names, confessional ratification) are kept strictly as placeholders (e.g., `[CHURCH NAME]`, `[LOCATION]`, `[MEETING TIME]`).
-- **Centralized Configuration**: All church-specific details are centralized in [`src/config/church.ts`](src/config/church.ts). To update information once confirmed by leadership, edit this configuration file without changing UI components.
-- **Design System**: Classical editorial aesthetic with EB Garamond headings, Source Sans 3 body text, deep navy (`#070c18` / `#0f172a`), warm white (`#fdfbf7`), and restrained antique gold (`#b45309`) accents.
-
-## Project Structure
-
-```text
-/
-├── public/                 # Static assets (favicons, SVG icons)
-├── src/
-│   ├── components/         # Reusable Astro components
-│   │   ├── Header.astro         # Editorial navbar & plant status bar
-│   │   ├── Footer.astro         # 4-column footer with disclaimer
-│   │   ├── SectionHeader.astro  # Section header with gold dividers
-│   │   └── PillarCard.astro     # Theological conviction card
-│   ├── config/
-│   │   └── church.ts            # Central church configuration & placeholders
-│   ├── layouts/
-│   │   └── BaseLayout.astro     # Main layout, fonts, skip links, SEO
-│   ├── pages/
-│   │   └── index.astro          # Phase 1 homepage
-│   └── styles/
-│       └── global.css           # Tailwind v4 theme tokens & base styles
-├── astro.config.mjs        # Astro configuration with Tailwind CSS v4
-├── package.json
-└── tsconfig.json
-```
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v22+ recommended)
+- Node.js 22
 - npm
 
-### Development
-```bash
-# Start local dev server
-npm run dev
+## Install
 
-# Or start dev server in background
-astro dev --background
+```bash
+npm ci
 ```
 
-### Production Build
-```bash
-# Build static site to ./dist
-npm run build
+## Dev
 
-# Preview production build locally
+```bash
+npm run dev
+```
+
+Serves the site at http://localhost:4321.
+
+## Build
+
+```bash
+npm run build
+```
+
+Writes the static site to `dist/`.
+
+## Check
+
+```bash
+npm run check
+```
+
+Runs `astro check`.
+
+## Preview
+
+```bash
 npm run preview
 ```
+
+Serves the production build. Run `npm run build` first.
+
+## Project structure
+
+```text
+src/config/church.ts       # Bracketed placeholders. Never invent church facts.
+src/components/            # Header, footer, and shared Astro components
+src/layouts/               # Base HTML layout
+src/pages/                 # Routes
+src/styles/global.css      # Theme tokens and base styles
+public/                    # Static files
+docs/WORKFLOW.md           # Team process
+.github/workflows/ci.yml   # Pull request and main-branch checks
+```
+
+## CI
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on pull requests and on pushes to `main`. The job uses Node.js 22, then `npm ci`, `npm run build`, and `npm run check`. It does not use secrets.
