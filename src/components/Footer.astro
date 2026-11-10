@@ -1,0 +1,126 @@
+---
+import { churchConfig } from '../config/church';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy-950 text-slate-300 border-t-2 border-gold-600/30">
+  <!-- Main Footer Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+      
+      <!-- Column 1: Church Identity -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-7 h-7 rounded border border-gold-500/40 flex items-center justify-center font-display font-semibold text-gold-400 bg-navy-900 text-sm">
+            ✝
+          </span>
+          <span class="font-display text-xl font-bold text-warm-white tracking-wide">
+            {churchConfig.name}
+          </span>
+        </div>
+        <p class="text-xs uppercase tracking-widest font-semibold text-gold-400">
+          {churchConfig.tradition} Church Plant
+        </p>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          {churchConfig.statusNotice}
+        </p>
+        <div class="pt-2">
+          <span class="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-mono tracking-tight bg-navy-900 border border-slate-700 text-slate-300">
+            Phase 1 • Planning & Development
+          </span>
+        </div>
+      </div>
+
+      <!-- Column 2: Lord's Day Gathering -->
+      <div class="space-y-3">
+        <h3 class="font-display text-base font-semibold text-warm-white tracking-wide border-b border-navy-800 pb-2">
+          Lord's Day Gathering
+        </h3>
+        <dl class="space-y-2 text-sm">
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Day & Time</dt>
+            <dd class="text-slate-200 font-medium">{churchConfig.gathering.day} • {churchConfig.gathering.time}</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Location</dt>
+            <dd class="text-slate-200">{churchConfig.gathering.locationName}</dd>
+            <dd class="text-slate-400 text-xs">{churchConfig.gathering.streetAddress}</dd>
+            <dd class="text-slate-400 text-xs">{churchConfig.gathering.cityStateZip}</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Room / Entrance</dt>
+            <dd class="text-slate-400 text-xs">{churchConfig.gathering.roomOrHall}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Column 3: Confessional Standard -->
+      <div class="space-y-3">
+        <h3 class="font-display text-base font-semibold text-warm-white tracking-wide border-b border-navy-800 pb-2">
+          Doctrinal Standard
+        </h3>
+        <p class="text-xs text-gold-400 font-serif italic">
+          Historic Confessional Faith
+        </p>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          {churchConfig.theology.confessionSummary}
+        </p>
+        <div class="pt-1">
+          <p class="text-xs text-slate-400">
+            Standard under review: <span class="text-slate-200 font-medium">{churchConfig.theology.confessionTitle}</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Column 4: Contact & Inquiries -->
+      <div class="space-y-3">
+        <h3 class="font-display text-base font-semibold text-warm-white tracking-wide border-b border-navy-800 pb-2">
+          Contact & Inquiries
+        </h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          {churchConfig.contact.inquiryNotice}
+        </p>
+        <dl class="space-y-2 text-sm pt-1">
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Email</dt>
+            <dd class="text-gold-400 font-mono text-xs">{churchConfig.contact.email}</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Phone</dt>
+            <dd class="text-slate-300 font-mono text-xs">{churchConfig.contact.phone}</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Mailing</dt>
+            <dd class="text-slate-400 text-xs">{churchConfig.contact.mailingAddress}</dd>
+          </div>
+        </dl>
+      </div>
+
+    </div>
+
+    <!-- Mandatory Placeholder Disclaimer Box -->
+    <div class="mt-12 pt-6 border-t border-navy-800 bg-navy-900/60 rounded p-4 text-xs text-slate-400 leading-relaxed">
+      <p class="font-semibold text-slate-300 mb-1">
+        Notice Concerning Church Plant Details & Status:
+      </p>
+      <p>
+        All bracketed terms (e.g. <span class="text-gold-400 font-mono">[CHURCH NAME]</span>, <span class="text-gold-400 font-mono">[LOCATION]</span>, <span class="text-gold-400 font-mono">[MEETING TIME]</span>) represent provisional development placeholders. Formal names, affiliations, addresses, schedules, and leadership appointments are pending ratification by the church planting leadership.
+      </p>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 pt-6 border-t border-navy-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>
+        &copy; {currentYear} {churchConfig.name}. All rights reserved.
+      </p>
+      <div class="flex items-center gap-4 text-slate-400 font-serif italic text-sm">
+        <span>Sola Scriptura</span>
+        <span>•</span>
+        <span>Sola Gratia</span>
+        <span>•</span>
+        <span>Soli Deo Gloria</span>
+      </div>
+    </div>
+  </div>
+</footer>

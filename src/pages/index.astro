@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import PillarCard from '../components/PillarCard.astro';
+import { churchConfig } from '../config/church';
+---
+
+<BaseLayout>
+  <!-- =========================================================================
+       HERO SECTION: Classical Editorial Presentation
+       ========================================================================= -->
+  <section class="relative bg-warm-white border-b border-warm-border overflow-hidden pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-32">
+    <!-- Subtle ambient background ornament -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+        <path d="M50 0 L50 100 M0 50 L100 50" stroke="#000" stroke-width="0.5" fill="none" />
+      </svg>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <!-- Eyebrow Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-warm-cream border border-warm-border text-navy-800 text-xs sm:text-sm font-medium mb-8">
+        <span class="w-2 h-2 rounded-full bg-gold-600" aria-hidden="true"></span>
+        <span class="tracking-wide uppercase font-semibold text-gold-700 font-sans text-[11px] sm:text-xs">
+          Church Plant Initiative
+        </span>
+        <span class="text-slate-400">•</span>
+        <span class="text-slate-700">{churchConfig.tradition} Tradition</span>
+      </div>
+
+      <!-- Hero Heading -->
+      <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-navy-950 tracking-tight leading-[1.12] mb-6">
+        Proclaiming Christ.<br class="hidden sm:inline" />
+        <span class="text-gold-700 font-serif italic font-normal">Anchored in the Truth.</span>
+      </h1>
+
+      <!-- Mission Statement / Subtitle -->
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-700 leading-relaxed font-normal mb-10">
+        We are a Reformed Baptist church plant gathering in <span class="font-semibold text-navy-900">{churchConfig.name}</span>, dedicated to the authority of Holy Scripture, historic confessional faith, and the sovereign grace of God.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
+        <a 
+          href="#gathering" 
+          class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 border border-navy-900 text-base font-semibold rounded text-warm-white bg-navy-900 hover:bg-navy-800 hover:border-navy-800 active:scale-[0.99] transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-gold-600 focus:ring-offset-2"
+        >
+          Gathering Details
+        </a>
+        <a 
+          href="#beliefs" 
+          class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 border border-warm-border text-base font-semibold rounded text-navy-900 bg-white hover:bg-warm-cream hover:border-gold-600/50 transition-all focus:outline-none focus:ring-2 focus:ring-gold-600 focus:ring-offset-2"
+        >
+          Our Beliefs
+        </a>
+      </div>
+
+      <!-- Quick Logistics Strip (Visitor High Priority) -->
+      <div class="max-w-4xl mx-auto bg-white border border-warm-border rounded-lg p-6 sm:p-8 shadow-xs text-left">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-warm-border">
+          
+          <!-- When -->
+          <div class="flex items-start gap-4 pt-4 md:pt-0">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg">
+              ⏰
+            </div>
+            <div>
+              <p class="text-xs uppercase tracking-wider font-semibold text-gold-700 mb-1">When We Gather</p>
+              <p class="text-navy-950 font-bold text-base">{churchConfig.gathering.day}</p>
+              <p class="text-slate-600 text-sm">{churchConfig.gathering.time}</p>
+            </div>
+          </div>
+
+          <!-- Where -->
+          <div class="flex items-start gap-4 pt-4 md:pt-0 md:pl-6">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg">
+              📍
+            </div>
+            <div>
+              <p class="text-xs uppercase tracking-wider font-semibold text-gold-700 mb-1">Meeting Location</p>
+              <p class="text-navy-950 font-bold text-base">{churchConfig.gathering.locationName}</p>
+              <p class="text-slate-600 text-sm">{churchConfig.gathering.streetAddress}</p>
+            </div>
+          </div>
+
+          <!-- Status / Contact -->
+          <div class="flex items-start gap-4 pt-4 md:pt-0 md:pl-6">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 shrink-0 font-serif font-bold text-lg">
+              ✉️
+            </div>
+            <div>
+              <p class="text-xs uppercase tracking-wider font-semibold text-gold-700 mb-1">Get In Touch</p>
+              <p class="text-navy-950 font-bold text-base font-mono text-xs">{churchConfig.contact.email}</p>
+              <p class="text-slate-600 text-xs mt-0.5">Core group inquiries welcome</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION: Lord's Day Gathering & Visitor Guide
+       ========================================================================= -->
+  <section id="gathering" class="py-16 sm:py-24 bg-warm-cream/50 border-b border-warm-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <SectionHeader 
+        eyebrow="Plan Your Visit"
+        title="Worshiping With Us on the Lord's Day"
+        subtitle="Whether you are a convinced Reformed believer, seeking a church home, or simply curious about the Christian faith, we warmly welcome you to gather with us."
+      />
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Logistics Card -->
+        <div class="bg-white p-8 rounded border border-warm-border shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-600"></span>
+              <h3 class="font-display text-xl font-bold text-navy-950">Location & Time</h3>
+            </div>
+            <dl class="space-y-4 text-sm mt-6">
+              <div class="border-b border-warm-border/60 pb-3">
+                <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">Weekly Meeting</dt>
+                <dd class="text-base font-bold text-navy-950">{churchConfig.gathering.day} at {churchConfig.gathering.time}</dd>
+              </div>
+              <div class="border-b border-warm-border/60 pb-3">
+                <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">Facility Name</dt>
+                <dd class="text-navy-950 font-medium">{churchConfig.gathering.locationName}</dd>
+                <dd class="text-slate-600 text-xs mt-1">{churchConfig.gathering.roomOrHall}</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">Address</dt>
+                <dd class="text-navy-950 font-mono text-xs">{churchConfig.gathering.streetAddress}</dd>
+                <dd class="text-navy-950 font-mono text-xs">{churchConfig.gathering.cityStateZip}</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="mt-8 pt-4 border-t border-warm-border text-xs text-slate-500">
+            <p><span class="font-semibold text-navy-900">Note:</span> {churchConfig.gathering.notes}</p>
+          </div>
+        </div>
+
+        <!-- Parking & Arrival Card -->
+        <div class="bg-white p-8 rounded border border-warm-border shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-600"></span>
+              <h3 class="font-display text-xl font-bold text-navy-950">Arrival & Access</h3>
+            </div>
+            <div class="space-y-4 text-sm text-slate-700 mt-6">
+              <div>
+                <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">Parking Information</p>
+                <p class="text-slate-600 leading-relaxed">{churchConfig.gathering.parkingNotes}</p>
+              </div>
+              <div>
+                <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">Building Access</p>
+                <p class="text-slate-600 leading-relaxed">{churchConfig.gathering.accessibilityNotes}</p>
+              </div>
+              <div>
+                <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">Arrival Recommendation</p>
+                <p class="text-slate-600 leading-relaxed">{churchConfig.gathering.arrivalTip}</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 pt-4 border-t border-warm-border text-xs text-slate-500">
+            <p>Our greeting team will be at the entrance to welcome you and assist with directions.</p>
+          </div>
+        </div>
+
+        <!-- Children & Attire Card -->
+        <div class="bg-white p-8 rounded border border-warm-border shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-600"></span>
+              <h3 class="font-display text-xl font-bold text-navy-950">Families & Attire</h3>
+            </div>
+            <div class="space-y-4 text-sm text-slate-700 mt-6">
+              <div>
+                <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">Children in Worship</p>
+                <p class="text-slate-600 leading-relaxed">{churchConfig.worship.childcarePolicy}</p>
+              </div>
+              <div>
+                <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">What to Wear</p>
+                <p class="text-slate-600 leading-relaxed">{churchConfig.worship.dressCodeGuidance}</p>
+              </div>
+              <div>
+                <p class="font-semibold text-navy-950 mb-1 text-xs uppercase tracking-wider">What to Bring</p>
+                <p class="text-slate-600 leading-relaxed">Bring your Bible (we commonly preach from the ESV/NASB). Hymnals and worship orders are provided at the door.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 pt-4 border-t border-warm-border text-xs text-slate-500">
+            <p>Questions prior to visiting? Reach out via our <a href="#contact" class="text-gold-700 font-semibold underline">contact section</a>.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION: Theological Foundations / Pillars
+       ========================================================================= -->
+  <section id="beliefs" class="py-16 sm:py-24 bg-warm-white border-b border-warm-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <SectionHeader 
+        eyebrow="Our Theological Convictions"
+        title="Standing Upon Historic, Confessional Truth"
+        subtitle="We believe that sound doctrine fuels heartfelt worship, holy living, and faithful proclamation of the gospel."
+      />
+
+      <!-- Confessional Banner -->
+      <div class="mb-12 p-6 sm:p-8 bg-warm-cream border-l-4 border-gold-600 rounded-r text-left">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest font-bold text-gold-700 block mb-1">
+              Confessional Heritage
+            </span>
+            <h3 class="font-display text-xl sm:text-2xl font-bold text-navy-950">
+              {churchConfig.theology.confessionTitle}
+            </h3>
+            <p class="mt-2 text-sm sm:text-base text-slate-700 leading-relaxed">
+              {churchConfig.theology.confessionSummary}
+            </p>
+          </div>
+          <div class="shrink-0">
+            <span class="inline-flex items-center px-3 py-1.5 rounded text-xs font-mono bg-white border border-warm-border text-slate-600">
+              Status: Under Review
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {churchConfig.theology.pillars.map((pillar, index) => (
+          <PillarCard 
+            number={`0${index + 1}`}
+            title={pillar.title}
+            summary={pillar.summary}
+            scripture={pillar.scripture}
+          />
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION: What to Expect in Worship (Regulative Principle)
+       ========================================================================= -->
+  <section id="worship" class="py-16 sm:py-24 bg-warm-cream/40 border-b border-warm-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <SectionHeader 
+        eyebrow="Order of Worship"
+        title="Reverent, God-Centered Corporate Liturgy"
+        subtitle={churchConfig.worship.description}
+      />
+
+      <div class="space-y-6">
+        {churchConfig.worship.orderElements.map((element, index) => (
+          <div class="flex items-start gap-4 sm:gap-6 p-6 sm:p-8 bg-white border border-warm-border rounded-sm shadow-xs">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded bg-navy-950 text-gold-400 flex items-center justify-center font-display font-bold text-lg sm:text-xl shrink-0">
+              {index + 1}
+            </div>
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold text-navy-950 mb-2">
+                {element.title}
+              </h3>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                {element.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Biblical Quote Callout -->
+      <div class="mt-12 text-center p-8 bg-white border border-warm-border rounded">
+        <blockquote class="font-display text-xl sm:text-2xl italic text-navy-900 leading-relaxed">
+          &ldquo;Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God.&rdquo;
+        </blockquote>
+        <cite class="mt-4 block text-xs tracking-widest uppercase font-semibold text-gold-700 not-italic">
+          Colossians 3:16
+        </cite>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION: About the Plant & Leadership Vision
+       ========================================================================= -->
+  <section id="about" class="py-16 sm:py-24 bg-warm-white border-b border-warm-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <SectionHeader 
+        eyebrow="About the Plant"
+        title="A Gospel Work for God's Glory"
+        subtitle="Why plant a Reformed Baptist church in our community?"
+      />
+
+      <div class="prose prose-slate max-w-none text-slate-700 text-base sm:text-lg leading-relaxed space-y-6">
+        <p>
+          The mission of <strong class="text-navy-950">{churchConfig.name}</strong> is born out of a desire to see God glorified through the planting of a faithful, biblically ordered, Christ-exalting local church. We pray to be a pillar and buttress of the truth, declaring the unsearchable riches of Christ to our neighbors and equipping families to walk faithfully in the Lord.
+        </p>
+
+        <!-- Pastoral Message Placeholder Container -->
+        <div class="my-8 p-6 sm:p-8 bg-warm-cream border border-warm-border rounded-lg">
+          <span class="text-xs uppercase tracking-widest font-bold text-gold-700 block mb-3">
+            Message from Church Planting Leadership
+          </span>
+          <p class="font-serif italic text-lg sm:text-xl text-navy-900 leading-relaxed mb-6">
+            &ldquo;{churchConfig.leadership.greeting}&rdquo;
+          </p>
+          <div class="border-t border-warm-border pt-4 flex flex-col sm:flex-row sm:items-center justify-between text-sm">
+            <div>
+              <p class="font-bold text-navy-950">{churchConfig.leadership.greetingAuthor}</p>
+              <p class="text-xs text-slate-500">{churchConfig.leadership.greetingAuthorRole}</p>
+            </div>
+            <div class="mt-2 sm:mt-0 text-xs font-mono text-slate-400">
+              Status: Draft placeholder awaiting final review
+            </div>
+          </div>
+        </div>
+
+        <p>
+          We believe the local church is the primary vehicle through which God makes disciples, guards the truth, and displays His wisdom to the heavenly realms. We invite you to pray with us as we lay foundational stones for this new assembly.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION: Contact & Connect
+       ========================================================================= -->
+  <section id="contact" class="py-16 sm:py-24 bg-warm-cream/60">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <SectionHeader 
+        eyebrow="Connect With Us"
+        title="We Would Love to Hear From You"
+        subtitle="Have questions about our gathering, want to learn more about our core group, or need prayer? Please reach out."
+      />
+
+      <div class="bg-white border border-warm-border rounded-lg p-8 sm:p-12 shadow-sm text-left max-w-2xl mx-auto">
+        <div class="space-y-6">
+          
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0">
+              ✉
+            </div>
+            <div>
+              <h3 class="text-xs uppercase tracking-wider font-semibold text-gold-700 mb-1">Email Inquiries</h3>
+              <p class="text-navy-950 font-bold text-base font-mono">{churchConfig.contact.email}</p>
+              <p class="text-slate-600 text-xs mt-1">Our planting team checks messages regularly and will reply promptly.</p>
+            </div>
+          </div>
+
+          <div class="border-t border-warm-border/60 pt-6 flex items-start gap-4">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0">
+              📞
+            </div>
+            <div>
+              <h3 class="text-xs uppercase tracking-wider font-semibold text-gold-700 mb-1">Telephone Contact</h3>
+              <p class="text-navy-950 font-medium text-base font-mono">{churchConfig.contact.phone}</p>
+              <p class="text-slate-600 text-xs mt-1">Direct inquiries or meeting arrangements.</p>
+            </div>
+          </div>
+
+          <div class="border-t border-warm-border/60 pt-6 flex items-start gap-4">
+            <div class="w-10 h-10 rounded bg-warm-cream border border-warm-border flex items-center justify-center text-navy-800 font-serif font-bold shrink-0">
+              📬
+            </div>
+            <div>
+              <h3 class="text-xs uppercase tracking-wider font-semibold text-gold-700 mb-1">Mailing Address</h3>
+              <p class="text-navy-950 font-medium text-base">{churchConfig.contact.mailingAddress}</p>
+              <p class="text-slate-600 text-xs mt-1">For written correspondence and official mail.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-warm-border text-center">
+          <p class="text-xs text-slate-500 italic">
+            "To Him be glory in the church and in Christ Jesus throughout all generations, forever and ever. Amen." — Ephesians 3:21
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

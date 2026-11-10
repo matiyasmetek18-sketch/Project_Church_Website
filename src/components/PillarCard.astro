@@ -1,0 +1,40 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  summary: string;
+  scripture: string;
+}
+
+const { number, title, summary, scripture } = Astro.props;
+---
+
+<article class="relative flex flex-col justify-between p-8 bg-white border border-warm-border rounded-sm hover:border-gold-600/60 transition-colors shadow-xs">
+  <div>
+    <!-- Card Number & Scripture Badge -->
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <span class="font-display text-2xl font-bold text-slate-300">
+        {number}
+      </span>
+      <span class="inline-flex items-center px-2.5 py-1 text-xs font-serif italic text-gold-700 bg-gold-100/60 rounded border border-gold-600/20">
+        {scripture}
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="font-display text-xl sm:text-2xl font-bold text-navy-950 mb-3 tracking-tight">
+      {title}
+    </h3>
+
+    <!-- Summary -->
+    <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+      {summary}
+    </p>
+  </div>
+
+  <!-- Decorative bottom hairline -->
+  <div class="mt-6 pt-4 border-t border-warm-border/60 flex items-center justify-between text-xs text-slate-500">
+    <span class="uppercase tracking-wider font-semibold text-[11px] text-slate-400">Theological Foundation</span>
+    <span class="text-gold-600 font-serif">✝</span>
+  </div>
+</article>

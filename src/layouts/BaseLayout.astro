@@ -1,0 +1,64 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { churchConfig } from '../config/church';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = `${churchConfig.name} | ${churchConfig.tagline}`,
+  description = `A Reformed Baptist church plant committed to the authority of Scripture, the doctrines of grace, and reverent God-centered worship.`
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts Preconnect & Stylesheets: EB Garamond (Headings) + Source Sans 3 (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Source+Sans+3:ital,wght@0,300..800;1,300..800&display=swap" 
+      rel="stylesheet" 
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-warm-white text-navy-900 font-sans selection:bg-gold-100 selection:text-navy-950">
+    
+    <!-- Keyboard Accessibility: Skip to Content Link -->
+    <a 
+      href="#main-content" 
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-navy-900 focus:text-warm-white focus:rounded focus:ring-2 focus:ring-gold-500 shadow-lg text-sm font-semibold"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Site Header & Navigation -->
+    <Header />
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Site Footer -->
+    <Footer />
+
+  </body>
+</html>
